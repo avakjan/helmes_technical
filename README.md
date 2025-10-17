@@ -45,11 +45,26 @@ Open `http://localhost:4200`.
 
 ---
 
-## How to Use
-1. Open `http://localhost:4200`.
-2. Fill in Name, select one or more Sectors, check Agree to terms, press Save.
-3. Refresh the page - the form refills from your saved data.
-4. You can keep editing and saving during the same browser session. Closing the browser ends the session.
+## Running Tests
+
+### Backend (Spring Boot)
+From the project root:
+```bash
+mvn -DskipITs test
+```
+- Uses an in-memory H2 for tests (`jdbc:h2:mem:`) and `create-drop` schema.
+- Includes:
+  - `SectorControllerTest`: verifies `/api/sectors` returns ordered sectors.
+  - `SubmissionControllerTest`: validates input, persists submission, and refills via session (`/api/submissions`, `/api/submissions/me`).
+
+### Frontend (Angular)
+From `frontend/` directory:
+```bash
+npm test
+```
+- Runs Karma with Chrome using Angular’s default test runner.
+- Includes:
+  - `app.component.spec.ts`: mocks `/api/sectors` and `/api/submissions/me`, verifies reactive form validity and data load.
 
 ---
 
