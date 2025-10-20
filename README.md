@@ -83,6 +83,10 @@ npm test
 ```
   - Returns the stored submission.
 
+- `POST /api/submissions/new`
+  - Clears the current session’s submission and returns `204 No Content`.
+  - Use this to start creating a new entry.
+
 ### Validation rules
 - `name`: required, max length 200
 - `sectorIds`: required (at least one)
