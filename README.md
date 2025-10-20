@@ -143,3 +143,20 @@ frontend (Angular)
 ```
 ## Notes
 - Sectors are served from the backend and rendered by Angular with proper indentation computed client-side.
+
+---
+
+## Database Dump
+```
+- `UML diagram`
+<img width="1049" height="740" alt="image" src="https://github.com/user-attachments/assets/cf81bc5c-8e9d-470f-bdda-b58b9fead9c8" />
+
+- `Data`
+  - `Users`
+  <img width="756" height="117" alt="image" src="https://github.com/user-attachments/assets/1880b698-2448-4a28-b60a-ff11f89dfdba" />
+
+  - `Sectors`
+  <img width="476" height="709" alt="image" src="https://github.com/user-attachments/assets/d0bd0eb8-8dd1-4314-9f83-93771f4ccf19" />
+
+  - `Dump`
+  [appdb_dump.sql](https://github.com/user-attachments/files/22999378/appdb_dump.sql)
