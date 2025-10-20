@@ -33,6 +33,19 @@ export class AppComponent {
     this.loadMySubmission();
   }
 
+  onToggleSector(sectorId: number, checked: boolean) {
+    const current = this.form.controls.sectorIds.value ?? [];
+    const set = new Set<number>(current);
+    if (checked) {
+      set.add(sectorId);
+    } else {
+      set.delete(sectorId);
+    }
+    this.form.controls.sectorIds.setValue(Array.from(set));
+    this.form.controls.sectorIds.markAsDirty();
+    this.form.controls.sectorIds.updateValueAndValidity();
+  }
+
   private loadSectors() {
     this.loading.set(true);
     this.http.get<Array<{id:number,name:string,parentId:number|null,sortOrder:number}>>('/api/sectors')

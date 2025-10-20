@@ -6,12 +6,17 @@
   </div>
 
   <div style="margin-top:12px;">
-    <label for="sectors">Sectors:</label>
-    <select id="sectors" multiple size="8" formControlName="sectorIds">
+    <label>Sectors:</label>
+    <div role="group" aria-labelledby="sectors" style="max-height:200px; overflow-y:auto; border:1px solid #ccc; padding:6px; width:360px;">
       @for (s of sectors(); track s.id) {
-        <option [ngValue]="s.id">{{'\u00A0'.repeat(s.depth*4)}}{{ s.name }}</option>
+        <label style="display:block;">
+          <input type="checkbox"
+                 [checked]="form.value.sectorIds?.includes(s.id)"
+                 (change)="onToggleSector(s.id, $any($event.target).checked)">
+          {{'\u00A0'.repeat(s.depth*4)}}{{ s.name }}
+        </label>
       }
-    </select>
+    </div>
   </div>
 
   <div style="margin-top:12px;">
