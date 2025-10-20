@@ -115,4 +115,17 @@ export class AppComponent {
         }
       });
   }
+
+  startNew() {
+    this.http.post('/api/submissions/new', {}).subscribe({
+      next: _ => {
+        this.form.reset({ name: '', sectorIds: [], agreeToTerms: false });
+        this.success.set(null);
+        this.error.set(null);
+      },
+      error: _ => {
+        this.error.set('Failed to start new entry');
+      }
+    });
+  }
 }

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.http.HttpStatus;
 import com.example.demo.sector.Sector;
 import com.example.demo.sector.SectorRepository;
 import jakarta.servlet.http.HttpSession;
@@ -73,5 +75,11 @@ public class SubmissionController {
 			saved.isAgreeTerms(),
 			saved.getSectors().stream().map(Sector::getId).collect(Collectors.toList())
 		);
+	}
+
+	@PostMapping("/new")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void startNewEntry(HttpSession session) {
+		session.removeAttribute("submissionId");
 	}
 }
