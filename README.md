@@ -147,7 +147,6 @@ frontend (Angular)
 ---
 
 ## Database Dump
-```
 - `UML diagram`
 <img width="1049" height="740" alt="image" src="https://github.com/user-attachments/assets/cf81bc5c-8e9d-470f-bdda-b58b9fead9c8" />
 
