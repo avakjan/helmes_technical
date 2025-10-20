@@ -29,10 +29,10 @@ This project implements the assignment using a Spring Boot backend (Maven, Java 
 ### Run the backend (Spring Boot)
 From the project root:
 ```bash
-mvn -DskipTests spring-boot:run
+mvn spring-boot:run
 ```
 - H2 database runs in file mode at `./data/appdb`.
-- Optional H2 console: `http://localhost:8080/h2-console` (JDBC: `jdbc:h2:file:./data/appdb`, user `sa`, empty password).
+- H2 console: `http://localhost:8080/h2-console` (JDBC: `jdbc:h2:file:./data/appdb`, user `sa`, empty password).
 
 ### Run the frontend (Angular)
 From the project root:
@@ -50,7 +50,7 @@ Open `http://localhost:4200`.
 ### Backend (Spring Boot)
 From the project root:
 ```bash
-mvn -DskipITs test
+mvn test
 ```
 - Uses an in-memory H2 for tests (`jdbc:h2:mem:`) and `create-drop` schema.
 - Includes:
