@@ -1,5 +1,23 @@
 ## Helmes Technical Assignment - Java (Spring Boot) + Angular
 
+### Table of Contents
+- [Overview](#overview)
+- [Why these choices](#why-these-choices)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Run the backend (Spring Boot)](#run-the-backend-spring-boot)
+  - [Run the frontend (Angular)](#run-the-frontend-angular)
+- [Running Tests](#running-tests)
+  - [Backend (Spring Boot)](#backend-spring-boot)
+  - [Frontend (Angular)](#frontend-angular)
+- [API](#api)
+  - [Validation rules](#validation-rules)
+- [Data Model](#data-model)
+- [Session Behavior (Task 3.4)](#session-behavior-task-34)
+- [Project Structure (key parts)](#project-structure-key-parts)
+- [Notes](#notes)
+- [Database Dump](#database-dump)
+
 ### Overview
 This project implements the assignment using a Spring Boot backend (Maven, Java 17) and an Angular frontend. It covers:
 - Sectors seeded into a database and exposed via an API
