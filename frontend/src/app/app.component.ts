@@ -63,17 +63,28 @@ export class AppComponent {
   }
 
   private computeDepths(items: Array<{id:number,name:string,parentId:number|null,sortOrder:number}>) {
-    const parentMap = new Map<number, number | null>();
-    items.forEach(i => parentMap.set(i.id, i.parentId ?? null));
+    const parentMap = this.buildParentMap(items);
     const memo = new Map<number, number>();
-    const depthOf = (id: number): number => {
-      if (memo.has(id)) return memo.get(id)!;
-      const parent = parentMap.get(id);
-      const d = parent ? 1 + depthOf(parent) : 0;
-      memo.set(id, d);
-      return d;
-    };
-    return items.map(i => ({ ...i, depth: depthOf(i.id) }));
+    return items.map(i => ({ ...i, depth: this.computeDepth(i.id, parentMap, memo) }));
+  }
+
+  private buildParentMap(items: Array<{id:number,parentId:number|null}>): Map<number, number | null> {
+    const map = new Map<number, number | null>();
+    for (const item of items) {
+      map.set(item.id, item.parentId ?? null);
+    }
+    return map;
+  }
+
+  private computeDepth(id: number, parentMap: Map<number, number | null>, memo: Map<number, number>): number {
+    const cached = memo.get(id);
+    if (cached !== undefined) return cached;
+    const parentId = parentMap.get(id);
+    const depth = (parentId !== null && parentId !== undefined)
+      ? 1 + this.computeDepth(parentId, parentMap, memo)
+      : 0;
+    memo.set(id, depth);
+    return depth;
   }
 
   private loadMySubmission() {
