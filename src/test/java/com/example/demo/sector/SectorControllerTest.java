@@ -28,4 +28,11 @@ class SectorControllerTest {
 			.andExpect(jsonPath("$[0].id").value(1))
 			.andExpect(jsonPath("$[0].name").value("Manufacturing"));
 	}
+
+	@Test
+	void childShouldFollowParentInResponse() throws Exception {
+		mockMvc.perform(get("/api/sectors"))
+			.andExpect(status().isOk())
+			.andExpect(jsonPath("$[1].parentId").value(1));
+	}
 }
